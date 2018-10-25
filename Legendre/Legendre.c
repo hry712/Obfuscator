@@ -87,7 +87,7 @@ int main(void){
 	tmp = legendre(-3, 17);
 	printf("%d %d ", bittable[tmp+1][0], bittable[tmp+1][1]);
 	printf("\n%d\n",(((-3-1)*(17-1)/4)%2));
-	tmp = legendre2(-3, 17);
+	tmp = legendre(-3, 17);
 	printf("%d %d ", bittable[tmp+1][0], bittable[tmp+1][1]);
 	printf("\n");
 
