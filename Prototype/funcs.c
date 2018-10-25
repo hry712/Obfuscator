@@ -34,6 +34,25 @@ int SumOfSeq(int* Arr, int Len){
 	return sum;
 }
 
+// Generate a package sequence integer array B.
+// In this function elements in seq B is generated simplely
+// by a linear equation which can also make seq B become a
+// hyperincremental sequence.
+// Param-Remainders: a remainder array in which elements
+// 		form a hyperincremental sequence orderly
+// Param-Len: the length of Remainders array
+// Param-Divisor: the divisor in MOD operation
+// Param-Result: store the final result sequence
+// Return-Void
+void GenPackageSeq(int* Remainders, int Len, int Divisor, int* Result){
+	int i = 0;
+	int r = 2;	// r var can be generated using outside P value
+			// to enhance the obfuscation
+	for (; i<Len; i++){
+		Result[i] = Divisor*r + Remainders[i];
+	}
+}
+
 // Generate a K value which participates a later comparison
 // The method is each two elements form a group then choose
 // one element in each groups as an addend to calculate a
@@ -117,4 +136,55 @@ int GenPrimeP(int Key, int (*Solutions[])(int k), int SoluNum, int* PrimeRecord)
 			PrimeRecord[count++] = p;
 	}
 	return count+1;
+}
+
+// Generate a 0-1 integer array indicating which congruence euqation has solution(s).
+// Param-Remainders: the total remainders used by congruence equations
+// Param-Len: the element number of Remainders
+// Param-P: used as the denominator of Legendre formula
+// Param-ResultStr: store the 0-1 array as the final result
+// Return-Void
+void GenZeroOneString(int* Remainders, int Len, int P, int* ResultStr){
+	int i = 0;
+	const int References[3][2] = {{0, 0}, {0, 1}, {1, 0}};
+	int j = 0;
+	int k = 0;
+	for (; i<Len; i++){
+		j = CalcLegendreFormula(Remainders[i], P);
+		ResultStr[k] = References[j+1][0];
+		ResultStr[k+1] = References[j+1][1];
+		k += 2;
+	}
+}
+
+// Choose half elements in Seq then calculate the summary and return it.
+// Param-Seq: provide the source integers
+// Param-Len: the length of Seq array
+// Return-Int: the final summary value of specified elements
+int CalcLeftCmpEle(int* Seq, int Len){
+	int sum = 0;
+	int i = 0;
+	int seed;
+	srand(time(NULL));
+	for (; i<Len; i+=2 ){
+		seed = rand()%10000;
+		if (seed%2)
+			sum += Seq[i];
+		else
+			sum += Seq[i+1];
+	}
+	return sum;
+}
+
+// The ZeroOneStr has the same length as Seq and each 0 or 1 indicates
+// whether to add current Seq element into the sum value.
+// Param-Seq: provide the source integers
+// Param-Len: the length of Seq array which is also the length of ZeroOneStr
+// Return-Int: the final summary value of specified elements
+int CalcRightCmpEle(int* Seq, int Len, int* ZeroOneStr){
+	int sum = 0;
+	int i = 0;
+	for (; i<Len; i++)
+		sum += Seq[i]*ZeroOneStr[i];
+	return sum;
 }

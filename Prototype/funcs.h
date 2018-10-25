@@ -3,11 +3,14 @@
 
 void GenHyperIncrementalSeq(int* Result, int Len);
 int SumOfSeq(int* Arr, int Len);
+void GenPackageSeq(int* Remainders, int Len, int Divisor, int* Result);
 int GenK(int* SeqB, int Len);
 int IsPrime(int Num);
 int CalcLegendreFormula(int D, int P);
 int GenPrimeP(int Key, int (*Solutions[])(int k), int SoluNum, int* PrimeRecord);
-int Gen
+void GenZeroOneString(int* Remainders, int Len, int P, int* ResultStr);
+int CalcLeftCmpEle(int* Seq, int Len);
+int CalcRightCmpEle(int* Seq, int Len, int* ZeroOneStr);
 
 // The following function declarations are the Congruence equation solutions, 
 // which canbe modified flexiblely.
