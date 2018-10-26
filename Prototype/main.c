@@ -20,7 +20,7 @@ int main(void){
 	
 	// Firstly, generate sequence A which is a hyperincremental integer array
 	int SeqA[SeqLen] = {0};
-	int SeqB[SeqoLen] = {0};
+	int SeqB[SeqLen] = {0};
 	int RandowQ;
 	GenHyperIncrementalSeq(SeqA, SeqLen);
 	// The only require to RandowQ is that it must be bigger than the summary
