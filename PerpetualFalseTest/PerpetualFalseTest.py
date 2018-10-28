@@ -101,7 +101,6 @@ if __name__ == '__main__':
                  SolutionFormula6,\
                  SolutionFormula7,\
                  SolutionFormula8]
-    ans = []
     tmp = []
     zero_one_list = []
     abnormal_list = []
@@ -129,7 +128,6 @@ if __name__ == '__main__':
                     print(tmp)
                     abnormal_list.append(tmp)
                 zero_one_list.clear()
-            ans.append(tmp)
 
     if len(abnormal_list) == 0:
         print("Congratulations! This is a perpetual false predicate generator.")
